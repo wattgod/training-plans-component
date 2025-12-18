@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Build Your Training Plan | Gravel God</title>
     
-    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -19,13 +18,10 @@
             --gg-yellow: #F4D03F;
             --gg-turquoise: #4ECDC4;
             --gg-white: #ffffff;
+            --gg-red: #e74c3c;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background: var(--gg-cream);
@@ -36,18 +32,10 @@
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 48px 24px;
-        }
+        .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
 
         /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
+        .header { text-align: center; margin-bottom: 48px; }
         .header-badge {
             display: inline-block;
             background: var(--gg-yellow);
@@ -61,28 +49,9 @@
             box-shadow: 4px 4px 0 var(--gg-charcoal);
             margin-bottom: 20px;
         }
-
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.02em;
-            margin-bottom: 12px;
-        }
-
-        .header-race {
-            font-size: 20px;
-            color: var(--gg-turquoise);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .header p {
-            color: var(--gg-muted);
-            font-size: 14px;
-            max-width: 520px;
-            margin: 0 auto;
-        }
+        .header h1 { font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 12px; }
+        .header-race { font-size: 20px; color: var(--gg-turquoise); font-weight: 700; margin-bottom: 16px; }
+        .header p { color: var(--gg-muted); font-size: 14px; max-width: 520px; margin: 0 auto; }
 
         /* Form */
         .form-card {
@@ -104,45 +73,15 @@
             margin-bottom: 24px;
             margin-top: 8px;
         }
+        .section-title:first-of-type { margin-top: 0; }
 
-        .section-title:first-of-type {
-            margin-top: 0;
-        }
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--gg-charcoal); }
+        .form-label .required { color: var(--gg-red); }
+        .form-label .optional { font-weight: 400; color: var(--gg-muted); font-size: 12px; }
+        .form-help { font-size: 12px; color: var(--gg-muted); margin-top: 4px; }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--gg-charcoal);
-        }
-
-        .form-label .required {
-            color: #e74c3c;
-        }
-
-        .form-label .optional {
-            font-weight: 400;
-            color: var(--gg-muted);
-            font-size: 12px;
-        }
-
-        .form-help {
-            font-size: 12px;
-            color: var(--gg-muted);
-            margin-top: 4px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        input[type="date"],
-        select,
-        textarea {
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], select, textarea {
             width: 100%;
             padding: 12px 14px;
             border: 2px solid var(--gg-charcoal);
@@ -152,20 +91,13 @@
             font-size: 14px;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--gg-turquoise);
             box-shadow: 3px 3px 0 var(--gg-turquoise);
         }
-
-        textarea {
-            min-height: 80px;
-            resize: vertical;
-        }
-
+        input.error, select.error { border-color: var(--gg-red); }
+        textarea { min-height: 80px; resize: vertical; }
         select {
             cursor: pointer;
             appearance: none;
@@ -176,18 +108,8 @@
         }
 
         /* Radio/Checkbox groups */
-        .radio-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .radio-group.horizontal {
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
+        .radio-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-group.horizontal { flex-direction: row; flex-wrap: wrap; gap: 10px; }
         .radio-option {
             display: flex;
             align-items: flex-start;
@@ -197,48 +119,16 @@
             cursor: pointer;
             transition: background 0.2s, border-color 0.2s;
         }
-
-        .radio-group.horizontal .radio-option {
-            flex: 1;
-            min-width: 120px;
-        }
-
-        .radio-option:hover {
-            background: var(--gg-cream);
-        }
-
-        .radio-option.selected {
-            background: var(--gg-cream);
-            border-color: var(--gg-turquoise);
-        }
-
-        .radio-option input {
-            margin-top: 2px;
-            accent-color: var(--gg-turquoise);
-        }
-
-        .radio-label {
-            flex: 1;
-        }
-
-        .radio-title {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .radio-desc {
-            font-size: 12px;
-            color: var(--gg-muted);
-            margin-top: 2px;
-        }
+        .radio-group.horizontal .radio-option { flex: 1; min-width: 100px; }
+        .radio-option:hover { background: var(--gg-cream); }
+        .radio-option.selected { background: var(--gg-cream); border-color: var(--gg-turquoise); }
+        .radio-option input { margin-top: 2px; accent-color: var(--gg-turquoise); }
+        .radio-label { flex: 1; }
+        .radio-title { font-weight: 600; font-size: 14px; }
+        .radio-desc { font-size: 12px; color: var(--gg-muted); margin-top: 2px; }
 
         /* Checkbox */
-        .checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
         .checkbox-option {
             display: flex;
             align-items: center;
@@ -249,59 +139,21 @@
             font-size: 13px;
             transition: background 0.2s, border-color 0.2s;
         }
-
-        .checkbox-option:hover {
-            background: var(--gg-cream);
-        }
-
-        .checkbox-option.selected {
-            background: var(--gg-cream);
-            border-color: var(--gg-turquoise);
-        }
-
-        .checkbox-option input {
-            accent-color: var(--gg-turquoise);
-        }
+        .checkbox-option:hover { background: var(--gg-cream); }
+        .checkbox-option.selected { background: var(--gg-cream); border-color: var(--gg-turquoise); }
+        .checkbox-option input { accent-color: var(--gg-turquoise); }
 
         /* Inline fields */
-        .inline-fields {
-            display: flex;
-            gap: 16px;
-        }
+        .inline-fields { display: flex; gap: 16px; }
+        .inline-fields .form-group { flex: 1; }
+        .inline-fields-3 { display: flex; gap: 12px; }
+        .inline-fields-3 .form-group { flex: 1; }
+        .inline-fields-4 { display: flex; gap: 10px; }
+        .inline-fields-4 .form-group { flex: 1; }
 
-        .inline-fields .form-group {
-            flex: 1;
-        }
-
-        .inline-fields-3 {
-            display: flex;
-            gap: 12px;
-        }
-
-        .inline-fields-3 .form-group {
-            flex: 1;
-        }
-
-        /* Small inputs */
-        .input-small {
-            width: 100px !important;
-        }
-
-        .input-with-unit {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .input-with-unit input {
-            flex: 1;
-        }
-
-        .input-unit {
-            font-size: 13px;
-            color: var(--gg-muted);
-            white-space: nowrap;
-        }
+        .input-with-unit { display: flex; align-items: center; gap: 8px; }
+        .input-with-unit input { flex: 1; }
+        .input-unit { font-size: 13px; color: var(--gg-muted); white-space: nowrap; }
 
         /* Race info card */
         .race-info {
@@ -311,26 +163,23 @@
             margin-bottom: 24px;
             border: 3px solid var(--gg-charcoal);
         }
+        .race-info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gg-muted); margin-bottom: 4px; }
+        .race-info-value { font-size: 18px; font-weight: 700; color: var(--gg-turquoise); }
+        .race-info-date { font-size: 14px; color: var(--gg-cream); margin-top: 4px; }
+        .race-info-weeks { font-size: 12px; color: var(--gg-yellow); margin-top: 4px; font-weight: 600; }
 
-        .race-info-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--gg-muted);
-            margin-bottom: 4px;
+        /* Calculated metrics display */
+        .calc-display {
+            background: var(--gg-cream);
+            border: 2px solid var(--gg-charcoal);
+            padding: 12px 16px;
+            margin-top: 12px;
+            font-size: 13px;
         }
-
-        .race-info-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--gg-turquoise);
-        }
-
-        .race-info-date {
-            font-size: 14px;
-            color: var(--gg-cream);
-            margin-top: 4px;
-        }
+        .calc-row { display: flex; justify-content: space-between; margin: 4px 0; }
+        .calc-label { color: var(--gg-muted); }
+        .calc-value { font-weight: 700; color: var(--gg-charcoal); }
+        .calc-value.highlight { color: var(--gg-turquoise); }
 
         /* Submit button */
         .submit-btn {
@@ -350,111 +199,37 @@
             transition: transform 0.1s, box-shadow 0.1s;
             margin-top: 8px;
         }
-
-        .submit-btn:hover {
-            transform: translate(3px, 3px);
-            box-shadow: 3px 3px 0 var(--gg-charcoal);
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+        .submit-btn:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--gg-charcoal); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: 6px 6px 0 var(--gg-charcoal); }
 
         /* Price footer */
-        .price-footer {
-            text-align: center;
-            margin-top: 24px;
-        }
+        .price-footer { text-align: center; margin-top: 24px; }
+        .price { font-size: 24px; font-weight: 700; color: var(--gg-charcoal); }
+        .price span { font-size: 14px; color: var(--gg-muted); font-weight: 400; }
+        .delivery { font-size: 13px; color: var(--gg-muted); margin-top: 8px; }
 
-        .price {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--gg-charcoal);
-        }
+        /* Messages */
+        .message { padding: 16px 20px; margin-bottom: 24px; border: 3px solid; font-size: 14px; }
+        .message.success { background: #d4edda; border-color: #28a745; color: #155724; }
+        .message.error { background: #f8d7da; border-color: #dc3545; color: #721c24; }
+        .message.warning { background: #fff3cd; border-color: #ffc107; color: #856404; }
 
-        .price span {
-            font-size: 14px;
-            color: var(--gg-muted);
-            font-weight: 400;
-        }
-
-        .delivery {
-            font-size: 13px;
-            color: var(--gg-muted);
-            margin-top: 8px;
-        }
-
-        /* Success/Error states */
-        .message {
-            padding: 16px 20px;
-            margin-bottom: 24px;
-            border: 3px solid;
-            font-size: 14px;
-        }
-
-        .message.success {
-            background: #d4edda;
-            border-color: #28a745;
-            color: #155724;
-        }
-
-        .message.error {
-            background: #f8d7da;
-            border-color: #dc3545;
-            color: #721c24;
-        }
-
-        /* Hidden */
-        .hidden {
-            display: none !important;
-        }
-
-        .honeypot {
-            position: absolute;
-            left: -9999px;
-        }
-
-        /* Divider */
-        .section-divider {
-            height: 2px;
-            background: var(--gg-cream);
-            margin: 32px 0;
-        }
+        .hidden { display: none !important; }
+        .honeypot { position: absolute; left: -9999px; }
 
         /* Responsive */
         @media (max-width: 600px) {
-            .container {
-                padding: 24px 16px;
-            }
-
-            .form-card {
-                padding: 24px 20px;
-            }
-
-            .inline-fields,
-            .inline-fields-3 {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .radio-group.horizontal {
-                flex-direction: column;
-            }
-
-            .radio-group.horizontal .radio-option {
-                min-width: auto;
-            }
-
-            .header h1 {
-                font-size: 24px;
-            }
+            .container { padding: 24px 16px; }
+            .form-card { padding: 24px 20px; }
+            .inline-fields, .inline-fields-3, .inline-fields-4 { flex-direction: column; gap: 0; }
+            .radio-group.horizontal { flex-direction: column; }
+            .radio-group.horizontal .radio-option { min-width: auto; }
+            .header h1 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <div class="header-badge">◆ Custom Training Plan</div>
             <h1>Build Your Plan</h1>
@@ -462,24 +237,25 @@
             <p>Fill out this form and I'll build a custom training plan calibrated to your goals, schedule, and fitness level. Plans delivered same day.</p>
         </div>
 
-        <!-- Messages -->
         <div id="message" class="message hidden"></div>
 
-        <!-- Race Info Card -->
         <div class="race-info" id="race-info">
             <div class="race-info-label">Your Target Race</div>
             <div class="race-info-value" id="race-name-display">Loading...</div>
             <div class="race-info-date" id="race-date-display"></div>
+            <div class="race-info-weeks" id="race-weeks-display"></div>
         </div>
 
         <form id="training-plan-form" class="form-card">
-            <!-- Honeypot -->
             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
-            
-            <!-- Hidden race field -->
             <input type="hidden" name="race_slug" id="race_slug" value="">
             <input type="hidden" name="race_name" id="race_name" value="">
             <input type="hidden" name="form_type" value="training_plan">
+            <!-- Calculated fields populated by JS -->
+            <input type="hidden" name="watts_per_kg" id="watts_per_kg" value="">
+            <input type="hidden" name="estimated_category" id="estimated_category" value="">
+            <input type="hidden" name="weeks_until_race" id="weeks_until_race" value="">
+            <input type="hidden" name="blindspots" id="blindspots" value="">
 
             <!-- ==================== SECTION 1: CONTACT ==================== -->
             <div class="section-title">1. Contact Info</div>
@@ -498,11 +274,11 @@
             <!-- ==================== SECTION 2: ABOUT YOU ==================== -->
             <div class="section-title">2. About You</div>
 
-            <div class="inline-fields-3">
+            <div class="inline-fields-4">
                 <div class="form-group">
-                    <label class="form-label" for="sex">Biological Sex <span class="required">*</span></label>
+                    <label class="form-label" for="sex">Sex <span class="required">*</span></label>
                     <select id="sex" name="sex" required>
-                        <option value="">Select...</option>
+                        <option value="">Select</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
@@ -518,18 +294,18 @@
                         <span class="input-unit">lbs</span>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-label">Height <span class="required">*</span></label>
+                    <div class="input-with-unit">
+                        <input type="number" id="height_ft" name="height_ft" required placeholder="5" min="4" max="7" style="width: 50px;">
+                        <span class="input-unit">'</span>
+                        <input type="number" id="height_in" name="height_in" required placeholder="10" min="0" max="11" style="width: 50px;">
+                        <span class="input-unit">"</span>
+                    </div>
+                </div>
             </div>
 
             <div class="inline-fields">
-                <div class="form-group">
-                    <label class="form-label" for="height_ft">Height <span class="required">*</span></label>
-                    <div class="input-with-unit">
-                        <input type="number" id="height_ft" name="height_ft" required placeholder="5" min="4" max="7" style="width: 60px;">
-                        <span class="input-unit">ft</span>
-                        <input type="number" id="height_in" name="height_in" required placeholder="10" min="0" max="11" style="width: 60px;">
-                        <span class="input-unit">in</span>
-                    </div>
-                </div>
                 <div class="form-group">
                     <label class="form-label" for="years_cycling">Years Cycling <span class="required">*</span></label>
                     <select id="years_cycling" name="years_cycling" required>
@@ -541,6 +317,27 @@
                         <option value="10+">10+ years</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-label" for="sleep_quality">Typical Sleep <span class="required">*</span></label>
+                    <select id="sleep_quality" name="sleep_quality" required>
+                        <option value="">Select...</option>
+                        <option value="excellent">Excellent (7-9 hrs, wake refreshed)</option>
+                        <option value="good">Good (6-7 hrs, mostly rested)</option>
+                        <option value="fair">Fair (5-6 hrs, often tired)</option>
+                        <option value="poor">Poor (< 5 hrs, always tired)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="stress_level">Life Stress Level <span class="required">*</span></label>
+                <select id="stress_level" name="stress_level" required>
+                    <option value="">Select...</option>
+                    <option value="low">Low - Life is chill, training is my stress relief</option>
+                    <option value="moderate">Moderate - Normal work/life demands</option>
+                    <option value="high">High - Demanding job, family obligations, limited bandwidth</option>
+                    <option value="very_high">Very High - Barely keeping head above water</option>
+                </select>
             </div>
 
             <!-- ==================== SECTION 3: RACE DETAILS ==================== -->
@@ -550,6 +347,7 @@
                 <div class="form-group">
                     <label class="form-label" for="race_date">Race Date <span class="required">*</span></label>
                     <input type="date" id="race_date" name="race_date" required>
+                    <div class="form-help" id="race-date-help"></div>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="race_distance">Distance</label>
@@ -568,10 +366,17 @@
                 <label class="form-label">Your Goal <span class="required">*</span></label>
                 <div class="radio-group">
                     <label class="radio-option">
-                        <input type="radio" name="race_goal" value="finish" required>
+                        <input type="radio" name="race_goal" value="survive" required>
+                        <div class="radio-label">
+                            <div class="radio-title">Survive</div>
+                            <div class="radio-desc">Just finish. Don't care how it feels. Get across the line.</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="race_goal" value="finish">
                         <div class="radio-label">
                             <div class="radio-title">Finish Strong</div>
-                            <div class="radio-desc">Complete the race feeling good</div>
+                            <div class="radio-desc">Complete the race feeling decent, not destroyed</div>
                         </div>
                     </label>
                     <label class="radio-option">
@@ -599,35 +404,26 @@
                 <div class="radio-group horizontal">
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="under-2" required>
-                        <div class="radio-label">
-                            <div class="radio-title">&lt; 2 hrs</div>
-                        </div>
+                        <div class="radio-label"><div class="radio-title">&lt; 2 hrs</div></div>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="2-4">
-                        <div class="radio-label">
-                            <div class="radio-title">2-4 hrs</div>
-                        </div>
+                        <div class="radio-label"><div class="radio-title">2-4 hrs</div></div>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="4-6">
-                        <div class="radio-label">
-                            <div class="radio-title">4-6 hrs</div>
-                        </div>
+                        <div class="radio-label"><div class="radio-title">4-6 hrs</div></div>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="6+">
-                        <div class="radio-label">
-                            <div class="radio-title">6+ hrs</div>
-                        </div>
+                        <div class="radio-label"><div class="radio-title">6+ hrs</div></div>
                     </label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label">Power & Heart Rate <span class="optional">(if known)</span></label>
-                <div class="form-help" style="margin-bottom: 12px;">Leave blank if you don't know these values. They help dial in your zones.</div>
-                <div class="inline-fields-3">
+                <label class="form-label">Power & Heart Rate <span class="optional">(if known - helps dial in zones)</span></label>
+                <div class="inline-fields-4" style="margin-top: 8px;">
                     <div class="form-group" style="margin-bottom: 0;">
                         <div class="input-with-unit">
                             <input type="number" id="ftp" name="ftp" placeholder="FTP" min="50" max="500">
@@ -636,24 +432,32 @@
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
                         <div class="input-with-unit">
-                            <input type="number" id="hr_max" name="hr_max" placeholder="Max HR" min="120" max="220">
+                            <input type="number" id="hr_max" name="hr_max" placeholder="Max" min="120" max="220">
                             <span class="input-unit">bpm</span>
                         </div>
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
                         <div class="input-with-unit">
-                            <input type="number" id="hr_threshold" name="hr_threshold" placeholder="Threshold HR" min="100" max="200">
+                            <input type="number" id="hr_threshold" name="hr_threshold" placeholder="LTHR" min="100" max="200">
+                            <span class="input-unit">bpm</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="input-with-unit">
+                            <input type="number" id="hr_resting" name="hr_resting" placeholder="Rest" min="30" max="100">
                             <span class="input-unit">bpm</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" for="hr_resting">Resting Heart Rate <span class="optional">(if known)</span></label>
-                <div class="input-with-unit">
-                    <input type="number" id="hr_resting" name="hr_resting" placeholder="e.g., 52" min="30" max="100" style="width: 120px;">
-                    <span class="input-unit">bpm (morning, before coffee)</span>
+                <div id="calc-display" class="calc-display hidden">
+                    <div class="calc-row">
+                        <span class="calc-label">Power-to-Weight:</span>
+                        <span class="calc-value highlight" id="calc-wpkg">—</span>
+                    </div>
+                    <div class="calc-row">
+                        <span class="calc-label">Estimated Category:</span>
+                        <span class="calc-value" id="calc-category">—</span>
+                    </div>
                 </div>
             </div>
 
@@ -665,6 +469,7 @@
                     <label class="form-label" for="hours_per_week">Weekly Training Hours <span class="required">*</span></label>
                     <select id="hours_per_week" name="hours_per_week" required>
                         <option value="">Select...</option>
+                        <option value="3-5">3-5 hours</option>
                         <option value="5-7">5-7 hours</option>
                         <option value="8-10">8-10 hours</option>
                         <option value="10-12">10-12 hours</option>
@@ -685,43 +490,30 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">Best Day for Long Rides <span class="required">*</span></label>
-                <div class="radio-group horizontal">
-                    <label class="radio-option">
-                        <input type="radio" name="long_ride_day" value="saturday" required>
-                        <div class="radio-label"><div class="radio-title">Saturday</div></div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="long_ride_day" value="sunday">
-                        <div class="radio-label"><div class="radio-title">Sunday</div></div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="long_ride_day" value="either">
-                        <div class="radio-label"><div class="radio-title">Either</div></div>
-                    </label>
+                <label class="form-label">Best Day(s) for Long Rides <span class="required">*</span></label>
+                <div class="form-help" style="margin-bottom: 10px;">Select all days that work for your long ride</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="monday"> Mon</label>
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="tuesday"> Tue</label>
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="wednesday"> Wed</label>
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="thursday"> Thu</label>
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="friday"> Fri</label>
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="saturday"> Sat</label>
+                    <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="sunday"> Sun</label>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label">Best Day for Hard Intervals <span class="required">*</span></label>
-                <div class="form-help" style="margin-bottom: 10px;">When do you feel freshest and most motivated for intense efforts?</div>
-                <div class="radio-group horizontal">
-                    <label class="radio-option">
-                        <input type="radio" name="interval_day" value="tuesday" required>
-                        <div class="radio-label"><div class="radio-title">Tuesday</div></div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="interval_day" value="wednesday">
-                        <div class="radio-label"><div class="radio-title">Wednesday</div></div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="interval_day" value="thursday">
-                        <div class="radio-label"><div class="radio-title">Thursday</div></div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="interval_day" value="flexible">
-                        <div class="radio-label"><div class="radio-title">Flexible</div></div>
-                    </label>
+                <label class="form-label">Best Day(s) for Hard Intervals <span class="required">*</span></label>
+                <div class="form-help" style="margin-bottom: 10px;">When do you feel freshest for intense efforts? Select all that work.</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="monday"> Mon</label>
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="tuesday"> Tue</label>
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="wednesday"> Wed</label>
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="thursday"> Thu</label>
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="friday"> Fri</label>
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="saturday"> Sat</label>
+                    <label class="checkbox-option"><input type="checkbox" name="interval_days" value="sunday"> Sun</label>
                 </div>
             </div>
 
@@ -729,38 +521,14 @@
                 <label class="form-label">Required Off Days <span class="required">*</span></label>
                 <div class="form-help" style="margin-bottom: 10px;">Days you absolutely cannot train (family, work, etc.)</div>
                 <div class="checkbox-group">
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="monday">
-                        Mon
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="tuesday">
-                        Tue
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="wednesday">
-                        Wed
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="thursday">
-                        Thu
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="friday">
-                        Fri
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="saturday">
-                        Sat
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="sunday">
-                        Sun
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="off_days" value="none">
-                        None required
-                    </label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="monday"> Mon</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="tuesday"> Tue</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="wednesday"> Wed</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="thursday"> Thu</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="friday"> Fri</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="saturday"> Sat</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="sunday"> Sun</label>
+                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="none"> None required</label>
                 </div>
             </div>
 
@@ -801,56 +569,25 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="form-label">Include Strength in Plan? <span class="required">*</span></label>
-                <div class="radio-group horizontal">
-                    <label class="radio-option">
-                        <input type="radio" name="strength_want" value="yes" required>
-                        <div class="radio-label">
-                            <div class="radio-title">Yes</div>
-                            <div class="radio-desc">Include strength sessions</div>
-                        </div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="strength_want" value="no">
-                        <div class="radio-label">
-                            <div class="radio-title">No</div>
-                            <div class="radio-desc">Cycling only</div>
-                        </div>
-                    </label>
-                    <label class="radio-option">
-                        <input type="radio" name="strength_want" value="optional">
-                        <div class="radio-label">
-                            <div class="radio-title">Your Call</div>
-                            <div class="radio-desc">You decide</div>
-                        </div>
-                    </label>
+            <div class="inline-fields">
+                <div class="form-group">
+                    <label class="form-label">Include Strength? <span class="required">*</span></label>
+                    <select id="strength_want" name="strength_want" required>
+                        <option value="">Select...</option>
+                        <option value="yes">Yes - Include strength sessions</option>
+                        <option value="no">No - Cycling only</option>
+                        <option value="optional">Your call - You decide</option>
+                    </select>
                 </div>
-            </div>
-
-            <div class="form-group" id="strength-equipment-group">
-                <label class="form-label">Available Equipment <span class="optional">(if including strength)</span></label>
-                <div class="checkbox-group">
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="strength_equipment" value="gym">
-                        Full gym
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="strength_equipment" value="dumbbells">
-                        Dumbbells
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="strength_equipment" value="kettlebell">
-                        Kettlebell
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="strength_equipment" value="bands">
-                        Bands
-                    </label>
-                    <label class="checkbox-option">
-                        <input type="checkbox" name="strength_equipment" value="bodyweight">
-                        Bodyweight only
-                    </label>
+                <div class="form-group">
+                    <label class="form-label">Equipment <span class="optional">(if including)</span></label>
+                    <select id="strength_equipment" name="strength_equipment">
+                        <option value="">Select...</option>
+                        <option value="full-gym">Full gym access</option>
+                        <option value="home-weights">Home weights (dumbbells/kettlebells)</option>
+                        <option value="minimal">Minimal (bands/bodyweight)</option>
+                        <option value="none">None</option>
+                    </select>
                 </div>
             </div>
 
@@ -867,13 +604,11 @@
                 <textarea id="notes" name="notes" placeholder="Anything else? Travel plans during training, work constraints, specific concerns, past training history..." rows="3"></textarea>
             </div>
 
-            <!-- Submit -->
             <button type="submit" class="submit-btn" id="submit-btn">
                 Submit & Build My Plan →
             </button>
         </form>
 
-        <!-- Price Footer -->
         <div class="price-footer">
             <div class="price">$199 <span>one-time</span></div>
             <div class="delivery">Plans delivered same day. ZWO files for all platforms.</div>
@@ -891,13 +626,31 @@
             'leadville-100': { name: 'Leadville 100', date: '2025-08-09', distance: '100mi' }
         };
 
-        // Get race from URL params
+        // W/kg category thresholds (male)
+        const CATEGORIES_MALE = [
+            { min: 5.0, cat: 'Pro / Cat 1', desc: 'Elite level' },
+            { min: 4.2, cat: 'Cat 2', desc: 'Very strong amateur' },
+            { min: 3.7, cat: 'Cat 3', desc: 'Strong recreational' },
+            { min: 3.2, cat: 'Cat 4', desc: 'Fit recreational' },
+            { min: 2.5, cat: 'Cat 5', desc: 'Beginner racer' },
+            { min: 0, cat: 'Recreational', desc: 'Building fitness' }
+        ];
+
+        // W/kg category thresholds (female) - adjusted ~15% lower
+        const CATEGORIES_FEMALE = [
+            { min: 4.3, cat: 'Pro / Cat 1', desc: 'Elite level' },
+            { min: 3.6, cat: 'Cat 2', desc: 'Very strong amateur' },
+            { min: 3.2, cat: 'Cat 3', desc: 'Strong recreational' },
+            { min: 2.8, cat: 'Cat 4', desc: 'Fit recreational' },
+            { min: 2.2, cat: 'Cat 5', desc: 'Beginner racer' },
+            { min: 0, cat: 'Recreational', desc: 'Building fitness' }
+        ];
+
         function getRaceFromURL() {
             const params = new URLSearchParams(window.location.search);
             return params.get('race') || params.get('r');
         }
 
-        // Initialize form with race data
         function initForm() {
             const raceSlug = getRaceFromURL();
             const race = RACES[raceSlug];
@@ -915,6 +668,8 @@
                 if (race.distance) {
                     document.getElementById('race_distance').value = race.distance;
                 }
+                
+                updateWeeksDisplay(race.date);
             } else {
                 document.getElementById('race-display').textContent = 'Your Race';
                 document.getElementById('race-name-display').textContent = 'Custom Race';
@@ -926,10 +681,129 @@
 
         function formatDate(dateStr) {
             const date = new Date(dateStr + 'T00:00:00');
-            return date.toLocaleDateString('en-US', { 
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
-            });
+            return date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
         }
+
+        function updateWeeksDisplay(dateStr) {
+            const raceDate = new Date(dateStr + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            const diffTime = raceDate - today;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            const diffWeeks = Math.floor(diffDays / 7);
+            
+            const weeksDisplay = document.getElementById('race-weeks-display');
+            const dateHelp = document.getElementById('race-date-help');
+            const dateInput = document.getElementById('race_date');
+            
+            if (diffDays < 0) {
+                weeksDisplay.textContent = '⚠️ Race date is in the past';
+                weeksDisplay.style.color = '#e74c3c';
+                dateHelp.textContent = 'Please select a future date';
+                dateHelp.style.color = '#e74c3c';
+                dateInput.classList.add('error');
+            } else if (diffWeeks < 4) {
+                weeksDisplay.textContent = `⚠️ ${diffWeeks} weeks away - very limited time`;
+                weeksDisplay.style.color = '#e74c3c';
+                dateHelp.textContent = 'Minimum 4 weeks recommended for effective training';
+                dateHelp.style.color = '#e74c3c';
+                dateInput.classList.add('error');
+            } else if (diffWeeks < 8) {
+                weeksDisplay.textContent = `${diffWeeks} weeks away - tight timeline`;
+                weeksDisplay.style.color = '#ffc107';
+                dateHelp.textContent = '';
+                dateInput.classList.remove('error');
+            } else {
+                weeksDisplay.textContent = `${diffWeeks} weeks away - good build time`;
+                weeksDisplay.style.color = '#4ECDC4';
+                dateHelp.textContent = '';
+                dateInput.classList.remove('error');
+            }
+            
+            document.getElementById('weeks_until_race').value = diffWeeks;
+        }
+
+        // Calculate W/kg and category
+        function calculateMetrics() {
+            const ftp = parseFloat(document.getElementById('ftp').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const sex = document.getElementById('sex').value;
+            
+            const calcDisplay = document.getElementById('calc-display');
+            const wpkgEl = document.getElementById('calc-wpkg');
+            const catEl = document.getElementById('calc-category');
+            
+            if (ftp && weight && sex) {
+                const weightKg = weight * 0.453592;
+                const wpkg = (ftp / weightKg).toFixed(2);
+                
+                const categories = sex === 'female' ? CATEGORIES_FEMALE : CATEGORIES_MALE;
+                const category = categories.find(c => wpkg >= c.min);
+                
+                wpkgEl.textContent = wpkg + ' W/kg';
+                catEl.textContent = category ? `${category.cat} (${category.desc})` : '—';
+                
+                document.getElementById('watts_per_kg').value = wpkg;
+                document.getElementById('estimated_category').value = category ? category.cat : '';
+                
+                calcDisplay.classList.remove('hidden');
+            } else {
+                calcDisplay.classList.add('hidden');
+            }
+        }
+
+        // Blindspot inference
+        function inferBlindspots() {
+            const blindspots = [];
+            
+            const sleep = document.getElementById('sleep_quality').value;
+            if (sleep === 'poor' || sleep === 'fair') {
+                blindspots.push('Recovery Deficit');
+            }
+            
+            const stress = document.getElementById('stress_level').value;
+            if (stress === 'high' || stress === 'very_high') {
+                blindspots.push('Life Stress Overload');
+            }
+            
+            const strength = document.querySelector('input[name="strength_current"]:checked');
+            if (strength && (strength.value === 'none' || strength.value === 'occasional')) {
+                blindspots.push('Movement Quality Gap');
+            }
+            
+            const injuries = document.getElementById('injuries').value;
+            if (injuries && injuries.trim().length > 0) {
+                blindspots.push('Injury Management Required');
+            }
+            
+            const equipment = document.getElementById('strength_equipment').value;
+            if (equipment === 'minimal' || equipment === 'none') {
+                blindspots.push('Equipment Limitations');
+            }
+            
+            const hours = document.getElementById('hours_per_week').value;
+            if (hours === '3-5' || hours === '5-7') {
+                blindspots.push('Time-Crunched Reality');
+            }
+            
+            const age = parseInt(document.getElementById('age').value);
+            if (age >= 45) {
+                blindspots.push('Masters Recovery Window');
+            }
+            
+            document.getElementById('blindspots').value = blindspots.join(',');
+            return blindspots;
+        }
+
+        // Event listeners
+        document.getElementById('race_date').addEventListener('change', function() {
+            updateWeeksDisplay(this.value);
+        });
+
+        document.getElementById('ftp').addEventListener('input', calculateMetrics);
+        document.getElementById('weight').addEventListener('input', calculateMetrics);
+        document.getElementById('sex').addEventListener('change', calculateMetrics);
 
         // Radio option selection styling
         document.querySelectorAll('.radio-option').forEach(option => {
@@ -955,12 +829,46 @@
             });
         });
 
+        // Form validation
+        function validateForm(data) {
+            const errors = [];
+            
+            // Check race date
+            const raceDate = new Date(data.race_date + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (raceDate < today) {
+                errors.push('Race date cannot be in the past');
+            }
+            
+            const weeksUntil = Math.floor((raceDate - today) / (7 * 24 * 60 * 60 * 1000));
+            if (weeksUntil < 4) {
+                errors.push('Race must be at least 4 weeks away');
+            }
+            
+            // Check that at least one long ride day is selected
+            if (!data.long_ride_days || data.long_ride_days.length === 0) {
+                errors.push('Select at least one day for long rides');
+            }
+            
+            // Check that at least one interval day is selected
+            if (!data.interval_days || data.interval_days.length === 0) {
+                errors.push('Select at least one day for intervals');
+            }
+            
+            return errors;
+        }
+
         // Form submission
         document.getElementById('training-plan-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submit-btn');
             const messageDiv = document.getElementById('message');
+            
+            // Infer blindspots before submission
+            inferBlindspots();
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
@@ -969,18 +877,28 @@
             const data = Object.fromEntries(formData.entries());
             
             // Collect checkbox values as arrays
+            data.long_ride_days = formData.getAll('long_ride_days');
+            data.interval_days = formData.getAll('interval_days');
             data.off_days = formData.getAll('off_days');
-            data.strength_equipment = formData.getAll('strength_equipment');
             
+            // Honeypot check
             if (data.website) {
                 showMessage('error', 'Submission blocked.');
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit & Build My Plan →';
                 return;
             }
+            
+            // Validate
+            const errors = validateForm(data);
+            if (errors.length > 0) {
+                showMessage('error', errors.join('. '));
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit & Build My Plan →';
+                return;
+            }
 
             try {
-                // IMPORTANT: Replace with your Cloudflare Worker URL
                 const WORKER_URL = 'https://training-plan-intake.YOUR_SUBDOMAIN.workers.dev';
                 
                 const response = await fetch(WORKER_URL, {
@@ -995,8 +913,8 @@
                     showMessage('success', '✓ Got it! I\'ll build your plan and send it to ' + data.email + ' within 24 hours (usually same day).');
                     this.reset();
                     initForm();
-                    // Reset visual states
                     document.querySelectorAll('.radio-option.selected, .checkbox-option.selected').forEach(el => el.classList.remove('selected'));
+                    document.getElementById('calc-display').classList.add('hidden');
                 } else {
                     showMessage('error', result.error || 'Something went wrong. Please try again.');
                 }
@@ -1017,7 +935,7 @@
             messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        // Initialize on load
+        // Initialize
         initForm();
     </script>
 </body>
