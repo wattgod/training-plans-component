@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Plans Section Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Sometype Mono', monospace;
+      background: #F5F5DC;
+      color: #59473C;
+      padding: 48px 24px;
+    }
+    
+    /* Training Plans Section - On-Demand Model */
+    .gg-training-section {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gg-training-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .gg-training-badge {
+      display: inline-block;
+      background: #F4D03F;
+      color: #2c2c2c;
+      padding: 8px 20px;
+      font-family: 'Sometype Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 3px solid #2c2c2c;
+      box-shadow: 4px 4px 0 #2c2c2c;
+      margin-bottom: 20px;
+    }
+
+    .gg-training-title {
+      font-family: 'Sometype Mono', monospace;
+      font-size: 36px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #2c2c2c;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .gg-training-subtitle {
+      font-family: 'Sometype Mono', monospace;
+      font-size: 16px;
+      color: #8C7568;
+      max-width: 650px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .gg-training-subtitle strong {
+      color: #59473C;
+    }
+
+    /* 3-Step Process */
+    .gg-training-process-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+
+    .gg-training-process-step {
+      background: #fff;
+      border: 3px solid #2c2c2c;
+      padding: 28px 24px;
+      width: 280px;
+      text-align: center;
+      position: relative;
+      box-shadow: 6px 6px 0 #2c2c2c;
+      font-family: 'Sometype Mono', monospace;
+    }
+
+    .gg-training-process-number {
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #4ECDC4;
+      color: #2c2c2c;
+      width: 32px;
+      height: 32px;
+      border: 3px solid #2c2c2c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .gg-training-process-step h3 {
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      margin-top: 8px;
+      letter-spacing: 0.03em;
+      color: #2c2c2c;
+    }
+
+    .gg-training-process-step p {
+      font-size: 13px;
+      color: #59473C;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .gg-training-device-list {
+      font-size: 12px !important;
+      color: #8C7568 !important;
+      margin-top: 10px !important;
+      font-style: italic;
+    }
+
+    /* CTA Block */
+    .gg-training-cta-block {
+      background: #2c2c2c;
+      padding: 40px;
+      text-align: center;
+      border: 4px solid #2c2c2c;
+      box-shadow: 8px 8px 0 #59473C;
+    }
+
+    .gg-training-cta-block h3 {
+      font-family: 'Sometype Mono', monospace;
+      color: #F5F5DC;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .gg-training-cta-button {
+      display: inline-block;
+      background: #4ECDC4;
+      color: #2c2c2c !important;
+      padding: 18px 40px;
+      font-family: 'Sometype Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-decoration: none !important;
+      letter-spacing: 0.05em;
+      border: 3px solid #F5F5DC;
+      box-shadow: 6px 6px 0 #F4D03F;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+
+    .gg-training-cta-button:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0 #F4D03F;
+      color: #2c2c2c !important;
+    }
+
+    .gg-training-includes-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .gg-training-includes-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #F5F5DC;
+      font-family: 'Sometype Mono', monospace;
+      font-size: 13px;
+    }
+
+    .gg-training-includes-icon {
+      width: 24px;
+      height: 24px;
+      background: #4ECDC4;
+      border: 2px solid #F5F5DC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: #2c2c2c;
+    }
+
+    .gg-training-cta-footer {
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .gg-training-cta-price {
+      font-family: 'Sometype Mono', monospace;
+      color: #4ECDC4;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .gg-training-cta-price span {
+      font-size: 14px;
+      color: #A89074;
+      font-weight: 400;
+      margin-left: 8px;
+    }
+
+    .gg-training-cta-delivery {
+      font-family: 'Sometype Mono', monospace;
+      color: #A89074;
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .gg-training-process-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .gg-training-process-step {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gg-training-includes-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .gg-training-cta-footer {
+        flex-direction: column;
+      }
+      
+      .gg-training-title {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<section class="gg-training-section" id="training">
+
+  <!-- Section Header -->
+  <div class="gg-training-header">
+    <div class="gg-training-badge">◆ Training Plans</div>
+    <h2 class="gg-training-title">Your Plan. Built for You.</h2>
+    <p class="gg-training-subtitle">We build a plan calibrated to <strong>SBT GRVL's</strong> altitude demands and 8,000+ feet of climbing at elevation.</p>
+  </div>
+  
+  <!-- 3-Step Process -->
+  <div class="gg-training-process-row">
+    <div class="gg-training-process-step">
+      <div class="gg-training-process-number">1</div>
+      <h3>Fill Out the Questionnaire</h3>
+      <p>Hours per week, race goals, schedule constraints, injury history. Takes 5 minutes.</p>
+    </div>
+    <div class="gg-training-process-step">
+      <div class="gg-training-process-number">2</div>
+      <h3>I Build Your Plan</h3>
+      <p>A custom training plan structured around YOUR life with workouts you can upload to any device or platform.</p>
+      <p class="gg-training-device-list">Garmin · Wahoo · Hammerhead · Zwift · TrainerRoad · TrainingPeaks</p>
+    </div>
+    <div class="gg-training-process-step">
+      <div class="gg-training-process-number">3</div>
+      <h3>Train With Confidence</h3>
+      <p>Personalized guide with race strategy, fueling, pacing, and race-day execution.</p>
+    </div>
+  </div>
+  
+  <!-- CTA Block -->
+  <div class="gg-training-cta-block">
+    <h3>Ready to Build Your SBT GRVL Plan?</h3>
+    
+    <a href="https://wattgod.github.io/athlete-profiles/athlete-questionnaire.html?race=sbt-grvl" class="gg-training-cta-button" target="_blank">
+      Build My Training Plan →
+    </a>
+    
+    <div class="gg-training-includes-row">
+      <div class="gg-training-includes-item">
+        <div class="gg-training-includes-icon">✓</div>
+        <span>Custom structured workouts</span>
+      </div>
+      <div class="gg-training-includes-item">
+        <div class="gg-training-includes-icon">✓</div>
+        <span>ZWO files for all platforms</span>
+      </div>
+      <div class="gg-training-includes-item">
+        <div class="gg-training-includes-icon">✓</div>
+        <span>Personalized race guide</span>
+      </div>
+      <div class="gg-training-includes-item">
+        <div class="gg-training-includes-icon">✓</div>
+        <span>Race-specific strategy</span>
+      </div>
+    </div>
+    
+    <div class="gg-training-cta-footer">
+      <div class="gg-training-cta-price">$199 <span>one-time</span></div>
+      <div class="gg-training-cta-delivery">Plans delivered same day.</div>
+    </div>
+  </div>
+  
+</section>
+
+</body>
+</html>
