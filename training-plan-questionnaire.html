@@ -37,7 +37,7 @@
         }
 
         .container {
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 48px 24px;
         }
@@ -80,7 +80,7 @@
         .header p {
             color: var(--gg-muted);
             font-size: 14px;
-            max-width: 500px;
+            max-width: 520px;
             margin: 0 auto;
         }
 
@@ -102,10 +102,15 @@
             padding-bottom: 8px;
             border-bottom: 2px solid var(--gg-charcoal);
             margin-bottom: 24px;
+            margin-top: 8px;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
         }
 
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .form-label {
@@ -118,6 +123,12 @@
 
         .form-label .required {
             color: #e74c3c;
+        }
+
+        .form-label .optional {
+            font-weight: 400;
+            color: var(--gg-muted);
+            font-size: 12px;
         }
 
         .form-help {
@@ -151,7 +162,7 @@
         }
 
         textarea {
-            min-height: 100px;
+            min-height: 80px;
             resize: vertical;
         }
 
@@ -168,17 +179,28 @@
         .radio-group {
             display: flex;
             flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-group.horizontal {
+            flex-direction: row;
+            flex-wrap: wrap;
             gap: 12px;
         }
 
         .radio-option {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
             padding: 12px 16px;
             border: 2px solid var(--gg-charcoal);
             cursor: pointer;
             transition: background 0.2s, border-color 0.2s;
+        }
+
+        .radio-group.horizontal .radio-option {
+            flex: 1;
+            min-width: 120px;
         }
 
         .radio-option:hover {
@@ -207,7 +229,38 @@
         .radio-desc {
             font-size: 12px;
             color: var(--gg-muted);
-            margin-top: 4px;
+            margin-top: 2px;
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border: 2px solid var(--gg-charcoal);
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .checkbox-option:hover {
+            background: var(--gg-cream);
+        }
+
+        .checkbox-option.selected {
+            background: var(--gg-cream);
+            border-color: var(--gg-turquoise);
+        }
+
+        .checkbox-option input {
+            accent-color: var(--gg-turquoise);
         }
 
         /* Inline fields */
@@ -218,6 +271,36 @@
 
         .inline-fields .form-group {
             flex: 1;
+        }
+
+        .inline-fields-3 {
+            display: flex;
+            gap: 12px;
+        }
+
+        .inline-fields-3 .form-group {
+            flex: 1;
+        }
+
+        /* Small inputs */
+        .input-small {
+            width: 100px !important;
+        }
+
+        .input-with-unit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-with-unit input {
+            flex: 1;
+        }
+
+        .input-unit {
+            font-size: 13px;
+            color: var(--gg-muted);
+            white-space: nowrap;
         }
 
         /* Race info card */
@@ -265,6 +348,7 @@
             box-shadow: 6px 6px 0 var(--gg-charcoal);
             cursor: pointer;
             transition: transform 0.1s, box-shadow 0.1s;
+            margin-top: 8px;
         }
 
         .submit-btn:hover {
@@ -331,6 +415,13 @@
             left: -9999px;
         }
 
+        /* Divider */
+        .section-divider {
+            height: 2px;
+            background: var(--gg-cream);
+            margin: 32px 0;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             .container {
@@ -341,9 +432,18 @@
                 padding: 24px 20px;
             }
 
-            .inline-fields {
+            .inline-fields,
+            .inline-fields-3 {
                 flex-direction: column;
                 gap: 0;
+            }
+
+            .radio-group.horizontal {
+                flex-direction: column;
+            }
+
+            .radio-group.horizontal .radio-option {
+                min-width: auto;
             }
 
             .header h1 {
@@ -359,7 +459,7 @@
             <div class="header-badge">◆ Custom Training Plan</div>
             <h1>Build Your Plan</h1>
             <div class="header-race" id="race-display">Loading...</div>
-            <p>Fill out this quick form and I'll build a custom training plan calibrated to your goals, schedule, and fitness level. Delivered same day.</p>
+            <p>Fill out this form and I'll build a custom training plan calibrated to your goals, schedule, and fitness level. Plans delivered same day.</p>
         </div>
 
         <!-- Messages -->
@@ -381,7 +481,7 @@
             <input type="hidden" name="race_name" id="race_name" value="">
             <input type="hidden" name="form_type" value="training_plan">
 
-            <!-- Section 1: Contact -->
+            <!-- ==================== SECTION 1: CONTACT ==================== -->
             <div class="section-title">1. Contact Info</div>
             
             <div class="inline-fields">
@@ -395,47 +495,40 @@
                 </div>
             </div>
 
-            <!-- Section 2: Race Details -->
-            <div class="section-title">2. Race Details</div>
-            
-            <div class="form-group">
-                <label class="form-label" for="race_date">Race Date <span class="required">*</span></label>
-                <input type="date" id="race_date" name="race_date" required>
-                <div class="form-help">When is your race? This determines plan duration.</div>
+            <!-- ==================== SECTION 2: ABOUT YOU ==================== -->
+            <div class="section-title">2. About You</div>
+
+            <div class="inline-fields-3">
+                <div class="form-group">
+                    <label class="form-label" for="sex">Biological Sex <span class="required">*</span></label>
+                    <select id="sex" name="sex" required>
+                        <option value="">Select...</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="age">Age <span class="required">*</span></label>
+                    <input type="number" id="age" name="age" required placeholder="35" min="16" max="90">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="weight">Weight <span class="required">*</span></label>
+                    <div class="input-with-unit">
+                        <input type="number" id="weight" name="weight" required placeholder="165" min="80" max="350">
+                        <span class="input-unit">lbs</span>
+                    </div>
+                </div>
             </div>
 
             <div class="inline-fields">
                 <div class="form-group">
-                    <label class="form-label" for="race_distance">Distance</label>
-                    <select id="race_distance" name="race_distance">
-                        <option value="">Select distance...</option>
-                        <option value="50mi">~50 miles</option>
-                        <option value="100mi">~100 miles</option>
-                        <option value="150mi">~150 miles</option>
-                        <option value="200mi">~200 miles</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="race_goal">Your Goal <span class="required">*</span></label>
-                    <select id="race_goal" name="race_goal" required>
-                        <option value="">Select goal...</option>
-                        <option value="finish">Finish strong</option>
-                        <option value="compete">Compete for placing</option>
-                        <option value="podium">Podium / Top 10</option>
-                        <option value="pr">Personal record</option>
-                    </select>
-                </div>
-            </div>
-
-            <!-- Section 3: Current Fitness -->
-            <div class="section-title">3. Current Fitness</div>
-
-            <div class="inline-fields">
-                <div class="form-group">
-                    <label class="form-label" for="ftp">FTP (watts)</label>
-                    <input type="number" id="ftp" name="ftp" placeholder="e.g., 250" min="50" max="500">
-                    <div class="form-help">If known. Leave blank if unsure.</div>
+                    <label class="form-label" for="height_ft">Height <span class="required">*</span></label>
+                    <div class="input-with-unit">
+                        <input type="number" id="height_ft" name="height_ft" required placeholder="5" min="4" max="7" style="width: 60px;">
+                        <span class="input-unit">ft</span>
+                        <input type="number" id="height_in" name="height_in" required placeholder="10" min="0" max="11" style="width: 60px;">
+                        <span class="input-unit">in</span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label class="form-label" for="years_cycling">Years Cycling <span class="required">*</span></label>
@@ -450,84 +543,328 @@
                 </div>
             </div>
 
+            <!-- ==================== SECTION 3: RACE DETAILS ==================== -->
+            <div class="section-title">3. Race Details</div>
+            
+            <div class="inline-fields">
+                <div class="form-group">
+                    <label class="form-label" for="race_date">Race Date <span class="required">*</span></label>
+                    <input type="date" id="race_date" name="race_date" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="race_distance">Distance</label>
+                    <select id="race_distance" name="race_distance">
+                        <option value="">Select...</option>
+                        <option value="50mi">~50 miles</option>
+                        <option value="100mi">~100 miles</option>
+                        <option value="150mi">~150 miles</option>
+                        <option value="200mi">~200 miles</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="form-group">
-                <label class="form-label">Longest Recent Ride <span class="required">*</span></label>
+                <label class="form-label">Your Goal <span class="required">*</span></label>
                 <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="race_goal" value="finish" required>
+                        <div class="radio-label">
+                            <div class="radio-title">Finish Strong</div>
+                            <div class="radio-desc">Complete the race feeling good</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="race_goal" value="compete">
+                        <div class="radio-label">
+                            <div class="radio-title">Compete</div>
+                            <div class="radio-desc">Race for a solid placing in my category</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="race_goal" value="podium">
+                        <div class="radio-label">
+                            <div class="radio-title">Podium</div>
+                            <div class="radio-desc">Gun for top 10 or age group podium</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- ==================== SECTION 4: CURRENT FITNESS ==================== -->
+            <div class="section-title">4. Current Fitness</div>
+
+            <div class="form-group">
+                <label class="form-label">Longest Ride in Last 4 Weeks <span class="required">*</span></label>
+                <div class="radio-group horizontal">
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="under-2" required>
                         <div class="radio-label">
-                            <div class="radio-title">Under 2 hours</div>
+                            <div class="radio-title">&lt; 2 hrs</div>
                         </div>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="2-4">
                         <div class="radio-label">
-                            <div class="radio-title">2-4 hours</div>
+                            <div class="radio-title">2-4 hrs</div>
                         </div>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="4-6">
                         <div class="radio-label">
-                            <div class="radio-title">4-6 hours</div>
+                            <div class="radio-title">4-6 hrs</div>
                         </div>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="longest_ride" value="6+">
                         <div class="radio-label">
-                            <div class="radio-title">6+ hours</div>
+                            <div class="radio-title">6+ hrs</div>
                         </div>
                     </label>
                 </div>
-                <div class="form-help">In the last 4 weeks</div>
-            </div>
-
-            <!-- Section 4: Schedule -->
-            <div class="section-title">4. Your Schedule</div>
-
-            <div class="form-group">
-                <label class="form-label" for="hours_per_week">Weekly Training Hours <span class="required">*</span></label>
-                <select id="hours_per_week" name="hours_per_week" required>
-                    <option value="">Select...</option>
-                    <option value="5-7">5-7 hours</option>
-                    <option value="8-10">8-10 hours</option>
-                    <option value="10-12">10-12 hours</option>
-                    <option value="12-15">12-15 hours</option>
-                    <option value="15+">15+ hours</option>
-                </select>
-                <div class="form-help">How many hours can you realistically train per week?</div>
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="long_ride_day">Best Day for Long Rides <span class="required">*</span></label>
-                <select id="long_ride_day" name="long_ride_day" required>
-                    <option value="">Select...</option>
-                    <option value="saturday">Saturday</option>
-                    <option value="sunday">Sunday</option>
-                    <option value="flexible">Flexible (weekends)</option>
-                </select>
+                <label class="form-label">Power & Heart Rate <span class="optional">(if known)</span></label>
+                <div class="form-help" style="margin-bottom: 12px;">Leave blank if you don't know these values. They help dial in your zones.</div>
+                <div class="inline-fields-3">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="input-with-unit">
+                            <input type="number" id="ftp" name="ftp" placeholder="FTP" min="50" max="500">
+                            <span class="input-unit">W</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="input-with-unit">
+                            <input type="number" id="hr_max" name="hr_max" placeholder="Max HR" min="120" max="220">
+                            <span class="input-unit">bpm</span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <div class="input-with-unit">
+                            <input type="number" id="hr_threshold" name="hr_threshold" placeholder="Threshold HR" min="100" max="200">
+                            <span class="input-unit">bpm</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="trainer_access">Indoor Trainer Access <span class="required">*</span></label>
-                <select id="trainer_access" name="trainer_access" required>
-                    <option value="">Select...</option>
-                    <option value="yes-smart">Yes - Smart trainer (Zwift, etc.)</option>
-                    <option value="yes-basic">Yes - Basic trainer</option>
-                    <option value="no">No - Outdoor only</option>
-                </select>
+                <label class="form-label" for="hr_resting">Resting Heart Rate <span class="optional">(if known)</span></label>
+                <div class="input-with-unit">
+                    <input type="number" id="hr_resting" name="hr_resting" placeholder="e.g., 52" min="30" max="100" style="width: 120px;">
+                    <span class="input-unit">bpm (morning, before coffee)</span>
+                </div>
             </div>
 
-            <!-- Section 5: Additional Info -->
-            <div class="section-title">5. Anything Else?</div>
+            <!-- ==================== SECTION 5: SCHEDULE ==================== -->
+            <div class="section-title">5. Your Schedule</div>
+
+            <div class="inline-fields">
+                <div class="form-group">
+                    <label class="form-label" for="hours_per_week">Weekly Training Hours <span class="required">*</span></label>
+                    <select id="hours_per_week" name="hours_per_week" required>
+                        <option value="">Select...</option>
+                        <option value="5-7">5-7 hours</option>
+                        <option value="8-10">8-10 hours</option>
+                        <option value="10-12">10-12 hours</option>
+                        <option value="12-15">12-15 hours</option>
+                        <option value="15+">15+ hours</option>
+                    </select>
+                    <div class="form-help">Realistic weekly commitment</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="trainer_access">Indoor Trainer <span class="required">*</span></label>
+                    <select id="trainer_access" name="trainer_access" required>
+                        <option value="">Select...</option>
+                        <option value="yes-smart">Smart trainer (Zwift, etc.)</option>
+                        <option value="yes-basic">Basic trainer</option>
+                        <option value="no">Outdoor only</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Best Day for Long Rides <span class="required">*</span></label>
+                <div class="radio-group horizontal">
+                    <label class="radio-option">
+                        <input type="radio" name="long_ride_day" value="saturday" required>
+                        <div class="radio-label"><div class="radio-title">Saturday</div></div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="long_ride_day" value="sunday">
+                        <div class="radio-label"><div class="radio-title">Sunday</div></div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="long_ride_day" value="either">
+                        <div class="radio-label"><div class="radio-title">Either</div></div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Best Day for Hard Intervals <span class="required">*</span></label>
+                <div class="form-help" style="margin-bottom: 10px;">When do you feel freshest and most motivated for intense efforts?</div>
+                <div class="radio-group horizontal">
+                    <label class="radio-option">
+                        <input type="radio" name="interval_day" value="tuesday" required>
+                        <div class="radio-label"><div class="radio-title">Tuesday</div></div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="interval_day" value="wednesday">
+                        <div class="radio-label"><div class="radio-title">Wednesday</div></div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="interval_day" value="thursday">
+                        <div class="radio-label"><div class="radio-title">Thursday</div></div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="interval_day" value="flexible">
+                        <div class="radio-label"><div class="radio-title">Flexible</div></div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Required Off Days <span class="required">*</span></label>
+                <div class="form-help" style="margin-bottom: 10px;">Days you absolutely cannot train (family, work, etc.)</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="monday">
+                        Mon
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="tuesday">
+                        Tue
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="wednesday">
+                        Wed
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="thursday">
+                        Thu
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="friday">
+                        Fri
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="saturday">
+                        Sat
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="sunday">
+                        Sun
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="off_days" value="none">
+                        None required
+                    </label>
+                </div>
+            </div>
+
+            <!-- ==================== SECTION 6: STRENGTH TRAINING ==================== -->
+            <div class="section-title">6. Strength Training</div>
+
+            <div class="form-group">
+                <label class="form-label">Current Strength Training <span class="required">*</span></label>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="strength_current" value="none" required>
+                        <div class="radio-label">
+                            <div class="radio-title">None</div>
+                            <div class="radio-desc">I don't do any strength work currently</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="strength_current" value="occasional">
+                        <div class="radio-label">
+                            <div class="radio-title">Occasional</div>
+                            <div class="radio-desc">Once a week or less, not consistent</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="strength_current" value="regular">
+                        <div class="radio-label">
+                            <div class="radio-title">Regular</div>
+                            <div class="radio-desc">1-2x per week, consistent routine</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="strength_current" value="dedicated">
+                        <div class="radio-label">
+                            <div class="radio-title">Dedicated</div>
+                            <div class="radio-desc">2-3x per week, structured program</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Include Strength in Plan? <span class="required">*</span></label>
+                <div class="radio-group horizontal">
+                    <label class="radio-option">
+                        <input type="radio" name="strength_want" value="yes" required>
+                        <div class="radio-label">
+                            <div class="radio-title">Yes</div>
+                            <div class="radio-desc">Include strength sessions</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="strength_want" value="no">
+                        <div class="radio-label">
+                            <div class="radio-title">No</div>
+                            <div class="radio-desc">Cycling only</div>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="strength_want" value="optional">
+                        <div class="radio-label">
+                            <div class="radio-title">Your Call</div>
+                            <div class="radio-desc">You decide</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" id="strength-equipment-group">
+                <label class="form-label">Available Equipment <span class="optional">(if including strength)</span></label>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="strength_equipment" value="gym">
+                        Full gym
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="strength_equipment" value="dumbbells">
+                        Dumbbells
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="strength_equipment" value="kettlebell">
+                        Kettlebell
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="strength_equipment" value="bands">
+                        Bands
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="strength_equipment" value="bodyweight">
+                        Bodyweight only
+                    </label>
+                </div>
+            </div>
+
+            <!-- ==================== SECTION 7: ADDITIONAL ==================== -->
+            <div class="section-title">7. Anything Else</div>
 
             <div class="form-group">
                 <label class="form-label" for="injuries">Injuries or Limitations</label>
-                <textarea id="injuries" name="injuries" placeholder="Any injuries, health conditions, or physical limitations I should know about?" rows="2"></textarea>
+                <textarea id="injuries" name="injuries" placeholder="Any injuries, health conditions, or physical limitations? (e.g., bad knee, lower back issues, recovering from surgery)" rows="2"></textarea>
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="notes">Additional Notes</label>
-                <textarea id="notes" name="notes" placeholder="Anything else you want me to know? Travel plans, work constraints, specific concerns?" rows="3"></textarea>
+                <textarea id="notes" name="notes" placeholder="Anything else? Travel plans during training, work constraints, specific concerns, past training history..." rows="3"></textarea>
             </div>
 
             <!-- Submit -->
@@ -546,36 +883,12 @@
     <script>
         // Race data lookup
         const RACES = {
-            'unbound-200': {
-                name: 'Unbound 200',
-                date: '2025-06-07',
-                distance: '200mi'
-            },
-            'unbound-100': {
-                name: 'Unbound 100',
-                date: '2025-06-07',
-                distance: '100mi'
-            },
-            'mid-south': {
-                name: 'Mid South',
-                date: '2025-03-14',
-                distance: '100mi'
-            },
-            'sbt-grvl': {
-                name: 'SBT GRVL',
-                date: '2025-08-16',
-                distance: '150mi'
-            },
-            'belgian-waffle-ride': {
-                name: 'Belgian Waffle Ride',
-                date: '2025-04-27',
-                distance: '130mi'
-            },
-            'leadville-100': {
-                name: 'Leadville 100',
-                date: '2025-08-09',
-                distance: '100mi'
-            }
+            'unbound-200': { name: 'Unbound 200', date: '2025-06-07', distance: '200mi' },
+            'unbound-100': { name: 'Unbound 100', date: '2025-06-07', distance: '100mi' },
+            'mid-south': { name: 'Mid South', date: '2025-03-14', distance: '100mi' },
+            'sbt-grvl': { name: 'SBT GRVL', date: '2025-08-16', distance: '150mi' },
+            'belgian-waffle-ride': { name: 'Belgian Waffle Ride', date: '2025-04-27', distance: '130mi' },
+            'leadville-100': { name: 'Leadville 100', date: '2025-08-09', distance: '100mi' }
         };
 
         // Get race from URL params
@@ -590,23 +903,19 @@
             const race = RACES[raceSlug];
 
             if (race) {
-                // Update display
                 document.getElementById('race-display').textContent = race.name;
                 document.getElementById('race-name-display').textContent = race.name;
                 document.getElementById('race-date-display').textContent = formatDate(race.date);
                 document.title = `Build Your ${race.name} Training Plan | Gravel God`;
                 
-                // Set hidden fields
                 document.getElementById('race_slug').value = raceSlug;
                 document.getElementById('race_name').value = race.name;
-                
-                // Pre-fill race date and distance
                 document.getElementById('race_date').value = race.date;
+                
                 if (race.distance) {
                     document.getElementById('race_distance').value = race.distance;
                 }
             } else {
-                // Generic fallback
                 document.getElementById('race-display').textContent = 'Your Race';
                 document.getElementById('race-name-display').textContent = 'Custom Race';
                 document.getElementById('race-date-display').textContent = 'Select your race date below';
@@ -618,22 +927,31 @@
         function formatDate(dateStr) {
             const date = new Date(dateStr + 'T00:00:00');
             return date.toLocaleDateString('en-US', { 
-                weekday: 'long',
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
             });
         }
 
         // Radio option selection styling
         document.querySelectorAll('.radio-option').forEach(option => {
             option.addEventListener('click', function() {
-                const name = this.querySelector('input').name;
-                document.querySelectorAll(`.radio-option input[name="${name}"]`).forEach(input => {
-                    input.closest('.radio-option').classList.remove('selected');
+                const input = this.querySelector('input');
+                const name = input.name;
+                document.querySelectorAll(`.radio-option input[name="${name}"]`).forEach(inp => {
+                    inp.closest('.radio-option').classList.remove('selected');
                 });
                 this.classList.add('selected');
-                this.querySelector('input').checked = true;
+                input.checked = true;
+            });
+        });
+
+        // Checkbox option selection styling
+        document.querySelectorAll('.checkbox-option').forEach(option => {
+            option.addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    const input = this.querySelector('input');
+                    input.checked = !input.checked;
+                }
+                this.classList.toggle('selected', this.querySelector('input').checked);
             });
         });
 
@@ -644,15 +962,16 @@
             const submitBtn = document.getElementById('submit-btn');
             const messageDiv = document.getElementById('message');
             
-            // Disable button
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
             
-            // Collect form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
             
-            // Honeypot check
+            // Collect checkbox values as arrays
+            data.off_days = formData.getAll('off_days');
+            data.strength_equipment = formData.getAll('strength_equipment');
+            
             if (data.website) {
                 showMessage('error', 'Submission blocked.');
                 submitBtn.disabled = false;
@@ -662,14 +981,11 @@
 
             try {
                 // IMPORTANT: Replace with your Cloudflare Worker URL
-                // See webhook/SETUP.md for instructions
                 const WORKER_URL = 'https://training-plan-intake.YOUR_SUBDOMAIN.workers.dev';
                 
                 const response = await fetch(WORKER_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
@@ -678,7 +994,9 @@
                 if (response.ok) {
                     showMessage('success', '✓ Got it! I\'ll build your plan and send it to ' + data.email + ' within 24 hours (usually same day).');
                     this.reset();
-                    initForm(); // Re-init race data
+                    initForm();
+                    // Reset visual states
+                    document.querySelectorAll('.radio-option.selected, .checkbox-option.selected').forEach(el => el.classList.remove('selected'));
                 } else {
                     showMessage('error', result.error || 'Something went wrong. Please try again.');
                 }
