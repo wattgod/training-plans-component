@@ -91,11 +91,35 @@ Add `race_challenge_tagline` to your race data JSON:
 | BWR California | 10,000+ feet of climbing and punchy SoCal heat |
 | Leadville 100 | extreme altitude starting at 10,200 feet |
 
-## Questionnaire URL
+## Questionnaire
 
-CTA links to: `https://wattgod.github.io/athlete-profiles/athlete-questionnaire.html?race={slug}`
+Each race gets its own pre-filled questionnaire:
 
-The `?race=` parameter pre-fills the race selection in the questionnaire.
+```
+https://wattgod.github.io/training-plans-component/training-plan-questionnaire.html?race={slug}
+```
+
+**Examples:**
+- Unbound: `?race=unbound-200`
+- Mid South: `?race=mid-south`
+- SBT GRVL: `?race=sbt-grvl`
+- BWR: `?race=belgian-waffle-ride`
+
+The `?race=` parameter:
+- Pre-fills race name in header
+- Pre-fills race date
+- Pre-fills race distance
+- Sets hidden fields for backend processing
+
+### Questionnaire Fields
+
+| Section | Fields |
+|---------|--------|
+| Contact | Name, Email |
+| Race Details | Race Date, Distance, Goal |
+| Current Fitness | FTP, Years Cycling, Longest Recent Ride |
+| Schedule | Hours/Week, Long Ride Day, Trainer Access |
+| Additional | Injuries, Notes |
 
 ## Tests
 
@@ -127,11 +151,25 @@ python3 test_training_plans_section.py
 
 ```
 training-plans-component/
-├── training_plans_section.py    # Main module
-├── test_training_plans_section.py  # Tests (14)
-├── preview.html                  # Visual preview
-└── README.md                     # This file
+├── training_plans_section.py         # Python module for landing pages
+├── test_training_plans_section.py    # Tests (14)
+├── training-plan-questionnaire.html  # Race-specific intake form
+├── index.html                        # Redirect to questionnaire
+├── preview.html                      # Visual preview of section
+└── README.md                         # This file
 ```
+
+## GitHub Pages Setup
+
+This repo uses GitHub Pages to host the questionnaire:
+
+1. Go to repo Settings → Pages
+2. Source: Deploy from branch
+3. Branch: `main`, folder: `/ (root)`
+4. Save
+
+Questionnaire will be live at:
+`https://wattgod.github.io/training-plans-component/training-plan-questionnaire.html`
 
 ## Related Repos
 

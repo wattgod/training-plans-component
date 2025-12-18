@@ -67,7 +67,7 @@ def test_race_challenge_in_subtitle():
 def test_questionnaire_url_correct():
     """Test that questionnaire URL is correctly formed."""
     html = generate_training_plans_section("SBT GRVL", "sbt-grvl", "test")
-    expected_url = "https://wattgod.github.io/athlete-profiles/athlete-questionnaire.html?race=sbt-grvl"
+    expected_url = "https://wattgod.github.io/training-plans-component/training-plan-questionnaire.html?race=sbt-grvl"
     assert expected_url in html, "Missing or incorrect questionnaire URL"
     print("✓ Questionnaire URL correct")
 

@@ -39,7 +39,7 @@ def generate_training_plans_section(
         Complete HTML string for the Training Plans section
     """
     
-    questionnaire_url = f"https://wattgod.github.io/athlete-profiles/athlete-questionnaire.html?race={race_slug}"
+    questionnaire_url = f"https://wattgod.github.io/training-plans-component/training-plan-questionnaire.html?race={race_slug}"
     
     html = f"""<section class="gg-training-section" id="training">
 
