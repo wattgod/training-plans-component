@@ -168,18 +168,6 @@
         .input-with-unit input { flex: 1; }
         .input-unit { font-size: 13px; color: var(--gg-muted); white-space: nowrap; }
 
-        /* Race info card */
-        .race-info {
-            background: var(--gg-charcoal);
-            color: var(--gg-cream);
-            padding: 20px 24px;
-            margin-bottom: 24px;
-            border: 3px solid var(--gg-charcoal);
-        }
-        .race-info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gg-muted); margin-bottom: 4px; }
-        .race-info-value { font-size: 18px; font-weight: 700; color: var(--gg-turquoise); }
-        .race-info-date { font-size: 14px; color: var(--gg-cream); margin-top: 4px; }
-        .race-info-weeks { font-size: 12px; color: var(--gg-yellow); margin-top: 4px; font-weight: 600; }
 
         /* Calculated metrics display */
         .calc-display {
@@ -259,13 +247,6 @@
         </div>
 
         <div id="message" class="message hidden"></div>
-
-        <div class="race-info" id="race-info">
-            <div class="race-info-label">Your Target Race</div>
-            <div class="race-info-value" id="race-name-display">Loading...</div>
-            <div class="race-info-date" id="race-date-display"></div>
-            <div class="race-info-weeks" id="race-weeks-display"></div>
-        </div>
 
         <form id="training-plan-form" class="form-card">
             <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
@@ -715,8 +696,6 @@
 
             if (race) {
                 document.getElementById('race-display').textContent = race.name;
-                document.getElementById('race-name-display').textContent = race.name;
-                document.getElementById('race-date-display').textContent = formatDate(race.date);
                 document.title = `Build Your ${race.name} Training Plan | Gravel God`;
                 
                 document.getElementById('race_slug').value = raceSlug;
@@ -730,11 +709,8 @@
                 updateWeeksDisplay(race.date);
             } else {
                 document.getElementById('race-display').textContent = 'Your Race';
-                document.getElementById('race-name-display').textContent = 'Custom Race';
-                document.getElementById('race-date-display').textContent = 'Select your race date below';
                 document.getElementById('race_slug').value = 'custom';
                 document.getElementById('race_name').value = 'Custom Race';
-                document.getElementById('race-weeks-display').textContent = '';
             }
         }
 
@@ -752,31 +728,24 @@
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             const diffWeeks = Math.floor(diffDays / 7);
             
-            const weeksDisplay = document.getElementById('race-weeks-display');
             const dateHelp = document.getElementById('race-date-help');
             const dateInput = document.getElementById('race_date');
             
             if (diffDays < 0) {
-                weeksDisplay.textContent = '⚠️ Race date is in the past';
-                weeksDisplay.style.color = '#e74c3c';
-                dateHelp.textContent = 'Please select a future date';
+                dateHelp.textContent = '⚠️ Race date is in the past - please select a future date';
                 dateHelp.style.color = '#e74c3c';
                 dateInput.classList.add('error');
             } else if (diffWeeks < 4) {
-                weeksDisplay.textContent = `⚠️ ${diffWeeks} weeks away - very limited time`;
-                weeksDisplay.style.color = '#e74c3c';
-                dateHelp.textContent = 'Minimum 4 weeks recommended for effective training';
+                dateHelp.textContent = `⚠️ ${diffWeeks} weeks away - minimum 4 weeks recommended`;
                 dateHelp.style.color = '#e74c3c';
                 dateInput.classList.add('error');
             } else if (diffWeeks < 8) {
-                weeksDisplay.textContent = `${diffWeeks} weeks away - tight timeline`;
-                weeksDisplay.style.color = '#ffc107';
-                dateHelp.textContent = '';
+                dateHelp.textContent = `${diffWeeks} weeks away - tight timeline`;
+                dateHelp.style.color = '#ffc107';
                 dateInput.classList.remove('error');
             } else {
-                weeksDisplay.textContent = `${diffWeeks} weeks away - good build time`;
-                weeksDisplay.style.color = '#4ECDC4';
-                dateHelp.textContent = '';
+                dateHelp.textContent = `${diffWeeks} weeks away - good build time`;
+                dateHelp.style.color = '#4ECDC4';
                 dateInput.classList.remove('error');
             }
             
