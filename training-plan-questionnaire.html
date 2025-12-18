@@ -661,8 +661,11 @@
             }
 
             try {
-                // TODO: Replace with your actual webhook URL
-                const response = await fetch('https://your-worker.your-subdomain.workers.dev/training-plan', {
+                // IMPORTANT: Replace with your Cloudflare Worker URL
+                // See webhook/SETUP.md for instructions
+                const WORKER_URL = 'https://training-plan-intake.YOUR_SUBDOMAIN.workers.dev';
+                
+                const response = await fetch(WORKER_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
