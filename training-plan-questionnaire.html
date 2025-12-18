@@ -74,6 +74,19 @@
             margin-top: 8px;
         }
         .section-title:first-of-type { margin-top: 0; }
+        
+        .section-help {
+            font-size: 13px;
+            color: var(--gg-muted);
+            margin-top: -16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .flexible-option {
+            background: var(--gg-cream);
+            border-style: dashed;
+        }
 
         .form-group { margin-bottom: 20px; }
         .form-label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--gg-charcoal); }
@@ -273,6 +286,7 @@
 
             <!-- ==================== SECTION 2: ABOUT YOU ==================== -->
             <div class="section-title">2. About You</div>
+            <p class="section-help">Basic info to help calibrate your plan. Used for zone calculations and recovery planning.</p>
 
             <div class="inline-fields-4">
                 <div class="form-group">
@@ -338,6 +352,7 @@
                     <option value="high">High - Demanding job, family obligations, limited bandwidth</option>
                     <option value="very_high">Very High - Barely keeping head above water</option>
                 </select>
+                <div class="form-help">Be honest—this affects recovery recommendations. No judgment.</div>
             </div>
 
             <!-- ==================== SECTION 3: RACE DETAILS ==================== -->
@@ -398,6 +413,7 @@
 
             <!-- ==================== SECTION 4: CURRENT FITNESS ==================== -->
             <div class="section-title">4. Current Fitness</div>
+            <p class="section-help">Helps set appropriate training zones and progression. Don't worry if you don't know exact numbers—estimates work.</p>
 
             <div class="form-group">
                 <label class="form-label">Longest Ride in Last 4 Weeks <span class="required">*</span></label>
@@ -463,6 +479,7 @@
 
             <!-- ==================== SECTION 5: SCHEDULE ==================== -->
             <div class="section-title">5. Your Schedule</div>
+            <p class="section-help">Your real-life constraints. I'll structure the plan around YOUR week, not the other way around.</p>
 
             <div class="inline-fields">
                 <div class="form-group">
@@ -491,8 +508,9 @@
 
             <div class="form-group">
                 <label class="form-label">Best Day(s) for Long Rides <span class="required">*</span></label>
-                <div class="form-help" style="margin-bottom: 10px;">Select all days that work for your long ride</div>
+                <div class="form-help" style="margin-bottom: 10px;">Select all days that work for your long ride, or choose flexible</div>
                 <div class="checkbox-group">
+                    <label class="checkbox-option flexible-option"><input type="checkbox" name="long_ride_days" value="flexible"> Flexible</label>
                     <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="monday"> Mon</label>
                     <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="tuesday"> Tue</label>
                     <label class="checkbox-option"><input type="checkbox" name="long_ride_days" value="wednesday"> Wed</label>
@@ -505,8 +523,9 @@
 
             <div class="form-group">
                 <label class="form-label">Best Day(s) for Hard Intervals <span class="required">*</span></label>
-                <div class="form-help" style="margin-bottom: 10px;">When do you feel freshest for intense efforts? Select all that work.</div>
+                <div class="form-help" style="margin-bottom: 10px;">When do you feel freshest for intense efforts? Select all that work, or flexible.</div>
                 <div class="checkbox-group">
+                    <label class="checkbox-option flexible-option"><input type="checkbox" name="interval_days" value="flexible"> Flexible</label>
                     <label class="checkbox-option"><input type="checkbox" name="interval_days" value="monday"> Mon</label>
                     <label class="checkbox-option"><input type="checkbox" name="interval_days" value="tuesday"> Tue</label>
                     <label class="checkbox-option"><input type="checkbox" name="interval_days" value="wednesday"> Wed</label>
@@ -518,8 +537,8 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">Required Off Days <span class="required">*</span></label>
-                <div class="form-help" style="margin-bottom: 10px;">Days you absolutely cannot train (family, work, etc.)</div>
+                <label class="form-label">Required Off Days</label>
+                <div class="form-help" style="margin-bottom: 10px;">Days you absolutely cannot train (family, work, etc.). Leave unchecked if flexible.</div>
                 <div class="checkbox-group">
                     <label class="checkbox-option"><input type="checkbox" name="off_days" value="monday"> Mon</label>
                     <label class="checkbox-option"><input type="checkbox" name="off_days" value="tuesday"> Tue</label>
@@ -528,12 +547,12 @@
                     <label class="checkbox-option"><input type="checkbox" name="off_days" value="friday"> Fri</label>
                     <label class="checkbox-option"><input type="checkbox" name="off_days" value="saturday"> Sat</label>
                     <label class="checkbox-option"><input type="checkbox" name="off_days" value="sunday"> Sun</label>
-                    <label class="checkbox-option"><input type="checkbox" name="off_days" value="none"> None required</label>
                 </div>
             </div>
 
             <!-- ==================== SECTION 6: STRENGTH TRAINING ==================== -->
             <div class="section-title">6. Strength Training</div>
+            <p class="section-help">Strength work improves durability and power. Not required, but helpful for long events.</p>
 
             <div class="form-group">
                 <label class="form-label">Current Strength Training <span class="required">*</span></label>
@@ -593,6 +612,7 @@
 
             <!-- ==================== SECTION 7: ADDITIONAL ==================== -->
             <div class="section-title">7. Anything Else</div>
+            <p class="section-help">Injuries, travel, constraints—anything that affects how I should structure your plan.</p>
 
             <div class="form-group">
                 <label class="form-label" for="injuries">Injuries or Limitations</label>
@@ -616,15 +636,45 @@
     </div>
 
     <script>
-        // Race data lookup
+        // Race data lookup - dates updated annually
         const RACES = {
             'unbound-200': { name: 'Unbound 200', date: '2025-06-07', distance: '200mi' },
             'unbound-100': { name: 'Unbound 100', date: '2025-06-07', distance: '100mi' },
             'mid-south': { name: 'Mid South', date: '2025-03-14', distance: '100mi' },
             'sbt-grvl': { name: 'SBT GRVL', date: '2025-08-16', distance: '150mi' },
             'belgian-waffle-ride': { name: 'Belgian Waffle Ride', date: '2025-04-27', distance: '130mi' },
-            'leadville-100': { name: 'Leadville 100', date: '2025-08-09', distance: '100mi' }
+            'leadville-100': { name: 'Leadville 100', date: '2025-08-09', distance: '100mi' },
+            // 2026 dates (estimates - update when confirmed)
+            'unbound-200-2026': { name: 'Unbound 200', date: '2026-06-06', distance: '200mi' },
+            'unbound-100-2026': { name: 'Unbound 100', date: '2026-06-06', distance: '100mi' },
+            'mid-south-2026': { name: 'Mid South', date: '2026-03-13', distance: '100mi' },
+            'sbt-grvl-2026': { name: 'SBT GRVL', date: '2026-08-15', distance: '150mi' },
+            'belgian-waffle-ride-2026': { name: 'Belgian Waffle Ride', date: '2026-04-26', distance: '130mi' }
         };
+        
+        // Auto-advance to next year's race if current year's date has passed
+        function getNextRaceDate(raceSlug) {
+            const race = RACES[raceSlug];
+            if (!race) return null;
+            
+            const raceDate = new Date(race.date + 'T00:00:00');
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // If race date is in the past, try next year's version
+            if (raceDate < today) {
+                const nextYearSlug = raceSlug + '-2026';
+                if (RACES[nextYearSlug]) {
+                    return { ...RACES[nextYearSlug], slug: raceSlug };
+                }
+                // Otherwise bump the year
+                const nextYear = new Date(race.date);
+                nextYear.setFullYear(nextYear.getFullYear() + 1);
+                return { ...race, date: nextYear.toISOString().split('T')[0] };
+            }
+            
+            return race;
+        }
 
         // W/kg category thresholds (male)
         const CATEGORIES_MALE = [
@@ -653,7 +703,7 @@
 
         function initForm() {
             const raceSlug = getRaceFromURL();
-            const race = RACES[raceSlug];
+            const race = raceSlug ? getNextRaceDate(raceSlug) : null;
 
             if (race) {
                 document.getElementById('race-display').textContent = race.name;
@@ -676,6 +726,7 @@
                 document.getElementById('race-date-display').textContent = 'Select your race date below';
                 document.getElementById('race_slug').value = 'custom';
                 document.getElementById('race_name').value = 'Custom Race';
+                document.getElementById('race-weeks-display').textContent = '';
             }
         }
 
@@ -818,14 +869,37 @@
             });
         });
 
-        // Checkbox option selection styling
+        // Checkbox option selection styling with Flexible logic
         document.querySelectorAll('.checkbox-option').forEach(option => {
             option.addEventListener('click', function(e) {
+                const input = this.querySelector('input');
                 if (e.target.tagName !== 'INPUT') {
-                    const input = this.querySelector('input');
                     input.checked = !input.checked;
                 }
-                this.classList.toggle('selected', this.querySelector('input').checked);
+                
+                const name = input.name;
+                const value = input.value;
+                const isChecked = input.checked;
+                
+                // Handle "Flexible" mutual exclusivity
+                if (value === 'flexible' && isChecked) {
+                    // Uncheck all specific days
+                    document.querySelectorAll(`input[name="${name}"]`).forEach(inp => {
+                        if (inp.value !== 'flexible') {
+                            inp.checked = false;
+                            inp.closest('.checkbox-option').classList.remove('selected');
+                        }
+                    });
+                } else if (value !== 'flexible' && isChecked) {
+                    // Uncheck "Flexible" if a specific day is selected
+                    const flexibleInput = document.querySelector(`input[name="${name}"][value="flexible"]`);
+                    if (flexibleInput) {
+                        flexibleInput.checked = false;
+                        flexibleInput.closest('.checkbox-option').classList.remove('selected');
+                    }
+                }
+                
+                this.classList.toggle('selected', input.checked);
             });
         });
 
