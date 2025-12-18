@@ -83,15 +83,15 @@ def generate_training_plans_section(
     <div class="gg-training-includes-row">
       <div class="gg-training-includes-item">
         <div class="gg-training-includes-icon">✓</div>
-        <span>Custom structured workouts</span>
+        <span>Workouts for head unit or Zwift</span>
       </div>
       <div class="gg-training-includes-item">
         <div class="gg-training-includes-icon">✓</div>
-        <span>ZWO files for all platforms</span>
+        <span>35,000+ word gravel manual</span>
       </div>
       <div class="gg-training-includes-item">
         <div class="gg-training-includes-icon">✓</div>
-        <span>Personalized race guide</span>
+        <span>Heat, fueling, pacing playbooks</span>
       </div>
       <div class="gg-training-includes-item">
         <div class="gg-training-includes-icon">✓</div>
