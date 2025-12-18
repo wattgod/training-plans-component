@@ -215,91 +215,18 @@
         .submit-btn:hover { transform: translate(3px, 3px); box-shadow: 3px 3px 0 var(--gg-charcoal); }
         .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: 6px 6px 0 var(--gg-charcoal); }
 
-        /* CTA Footer Block */
-        .cta-footer-block {
-            background: var(--gg-charcoal);
-            padding: 32px;
-            margin-top: 24px;
-            text-align: center;
-            border: 3px solid var(--gg-charcoal);
-            box-shadow: 6px 6px 0 var(--gg-brown);
-        }
-        
-        .cta-footer-title {
-            color: #F5F5DC;
-            font-size: 18px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            letter-spacing: 0.05em;
-        }
-        
-        .cta-includes-row {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
-        }
-        
-        .cta-includes-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #F5F5DC;
-            font-size: 13px;
-        }
-        
-        .cta-includes-icon {
-            width: 24px;
-            height: 24px;
-            background: var(--gg-turquoise);
-            border: 2px solid #F5F5DC;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-            color: var(--gg-charcoal);
-            flex-shrink: 0;
-        }
-        
-        .cta-footer-price {
-            margin-top: 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .cta-price {
-            color: var(--gg-turquoise);
-            font-size: 28px;
-            font-weight: 700;
-        }
-        
-        .cta-price span {
-            font-size: 14px;
-            color: #A89074;
-            font-weight: 400;
-            margin-left: 6px;
-        }
-        
-        .cta-delivery {
-            color: #A89074;
-            font-size: 13px;
-        }
-        
-        @media (max-width: 600px) {
-            .cta-includes-row {
-                flex-direction: column;
-                align-items: center;
-                gap: 10px;
-            }
-            .cta-footer-price {
-                flex-direction: column;
-                gap: 8px;
-            }
+        /* Price footer */
+        .price-footer { text-align: center; margin-top: 24px; }
+        .price { font-size: 28px; font-weight: 700; color: var(--gg-charcoal); }
+        .price span { font-size: 14px; color: var(--gg-muted); font-weight: 400; }
+        .delivery { 
+            font-size: 13px; 
+            color: var(--gg-muted); 
+            margin-top: 12px; 
+            max-width: 500px; 
+            margin-left: auto; 
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         /* Messages */
@@ -710,34 +637,9 @@
             </button>
         </form>
 
-        <div class="cta-footer-block">
-            <div class="cta-footer-title">What You Get</div>
-            
-            <div class="cta-includes-row">
-                <div class="cta-includes-item">
-                    <div class="cta-includes-icon">✓</div>
-                    <span>Workouts for head unit or Zwift</span>
-                </div>
-                <div class="cta-includes-item">
-                    <div class="cta-includes-icon">✓</div>
-                    <span>35,000+ word gravel manual</span>
-                </div>
-            </div>
-            <div class="cta-includes-row">
-                <div class="cta-includes-item">
-                    <div class="cta-includes-icon">✓</div>
-                    <span>Heat, fueling, pacing playbooks</span>
-                </div>
-                <div class="cta-includes-item">
-                    <div class="cta-includes-icon">✓</div>
-                    <span>Race-specific strategy</span>
-                </div>
-            </div>
-            
-            <div class="cta-footer-price">
-                <div class="cta-price">$199 <span>one-time</span></div>
-                <div class="cta-delivery">Plans delivered same day.</div>
-            </div>
+        <div class="price-footer">
+            <div class="price">$199 <span>one-time</span></div>
+            <div class="delivery">Extensive gravel racing manual (35,000+ words), structured workouts uploadable to your head unit or Zwift, playbooks for heat, fueling, hydration, pacing, mental training, and race-specific strategy. Delivered same day.</div>
         </div>
     </div>
 
