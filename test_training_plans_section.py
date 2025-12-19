@@ -44,7 +44,7 @@ def test_contains_section_structure():
     """Test that HTML contains required section structure."""
     html = generate_training_plans_section("SBT GRVL", "sbt-grvl", "altitude demands")
     assert 'id="training"' in html, "Missing section ID"
-    assert 'gg-training-section' in html, "Missing section class"
+    assert 'training-section' in html, "Missing section class"
     print("✓ Contains section structure")
 
 
@@ -76,16 +76,16 @@ def test_cta_button_present():
     """Test that CTA button is present."""
     html = generate_training_plans_section("SBT GRVL", "sbt-grvl", "test")
     assert 'Build My Training Plan' in html, "Missing CTA button text"
-    assert 'gg-training-cta-button' in html, "Missing CTA button class"
+    assert 'cta-button' in html, "Missing CTA button class"
     print("✓ CTA button present")
 
 
-def test_price_displayed():
-    """Test that $199 price is displayed."""
+def test_price_not_displayed():
+    """Test that price is NOT displayed (removed per requirements)."""
     html = generate_training_plans_section("SBT GRVL", "sbt-grvl", "test")
-    assert '$199' in html, "Missing $199 price"
-    assert 'one-time' in html, "Missing 'one-time' text"
-    print("✓ Price displayed correctly")
+    assert '$199' not in html, "Price should not be displayed"
+    assert 'one-time' not in html, "Price text should not be displayed"
+    print("✓ Price correctly removed")
 
 
 def test_same_day_delivery():
@@ -101,16 +101,17 @@ def test_three_step_process():
     assert 'Fill Out the Questionnaire' in html, "Missing step 1"
     assert 'I Build Your Plan' in html, "Missing step 2"
     assert 'Train With Confidence' in html, "Missing step 3"
-    assert 'gg-training-process-step' in html, "Missing process step class"
+    assert 'process-step' in html, "Missing process step class"
     print("✓ Three-step process rendered")
 
 
 def test_includes_checklist():
-    """Test that includes checklist is present."""
+    """Test that includes checklist is present with updated text."""
     html = generate_training_plans_section("SBT GRVL", "sbt-grvl", "test")
-    assert 'Custom structured workouts' in html, "Missing workouts include"
-    assert 'ZWO files for all platforms' in html, "Missing ZWO include"
-    assert 'Personalized race guide' in html, "Missing guide include"
+    assert 'Workouts for head unit or Zwift' in html, "Missing workouts include"
+    assert '35,000+ word gravel manual' in html, "Missing manual include"
+    assert 'Heat, fueling, pacing playbooks' in html, "Missing playbooks include"
+    assert 'Race-specific strategy' in html, "Missing strategy include"
     print("✓ Includes checklist present")
 
 
@@ -124,11 +125,12 @@ def test_device_list():
 
 
 def test_css_included():
-    """Test that CSS is included inline."""
+    """Test that CSS is included inline with correct class names."""
     html = generate_training_plans_section("SBT GRVL", "sbt-grvl", "test")
     assert '<style>' in html, "Missing style tag"
-    assert '.gg-training-section' in html, "Missing section CSS"
-    assert '.gg-training-cta-button' in html, "Missing button CSS"
+    assert '.training-section' in html, "Missing section CSS"
+    assert '.cta-button' in html, "Missing button CSS"
+    assert '.process-step' in html, "Missing process step CSS"
     print("✓ CSS included inline")
 
 
@@ -167,7 +169,7 @@ def run_all_tests():
         test_race_challenge_in_subtitle,
         test_questionnaire_url_correct,
         test_cta_button_present,
-        test_price_displayed,
+        test_price_not_displayed,
         test_same_day_delivery,
         test_three_step_process,
         test_includes_checklist,
@@ -203,9 +205,11 @@ def run_all_tests():
         print("\n✅ ALL TESTS PASSED")
         print("\nOn-demand model verified:")
         print("  ✅ Single CTA → questionnaire")
-        print("  ✅ $199 one-time price")
+        print("  ✅ Price removed (shown later)")
         print("  ✅ Same-day delivery")
         print("  ✅ Race-specific challenge tagline")
+        print("  ✅ Updated includes (35k+ word manual, playbooks)")
+        print("  ✅ Simplified class names (training-section, cta-block)")
     else:
         print(f"\n❌ {failed} TEST(S) FAILED")
         sys.exit(1)
