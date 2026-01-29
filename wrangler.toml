@@ -1,0 +1,11 @@
+name = "training-plan-intake"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+ALLOWED_ORIGIN = "https://wattgod.github.io"
+GITHUB_OWNER = "wattgod"
+GITHUB_REPO = "training-plans-component"
+
+# Secret (set via `npx wrangler secret put GITHUB_TOKEN`):
+# - GITHUB_TOKEN (Personal Access Token with 'issues:write' scope)

@@ -1,0 +1,351 @@
+<!-- Gravel God Training Plan Request Form - Embed Version -->
+<!-- Paste this entire block into an Elementor HTML widget or Custom HTML block -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sometype+Mono:wght@400;500;600;700&display=swap');
+
+.gg-form-container {
+  font-family: 'Sometype Mono', monospace;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: #F5E5D3;
+  border: 4px solid #2C2C2C;
+  box-shadow: 8px 8px 0 #2C2C2C;
+  color: #2C2C2C;
+}
+
+.gg-form-container * {
+  box-sizing: border-box;
+}
+
+.gg-form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid #59473C;
+}
+
+.gg-form-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #59473C;
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.gg-form-header p {
+  color: #59473C;
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.gg-form-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.gg-form-row.single {
+  flex-direction: column;
+}
+
+.gg-form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gg-form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #59473C;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gg-form-group label .required {
+  color: #E74C3C;
+}
+
+.gg-form-group input,
+.gg-form-group select,
+.gg-form-group textarea {
+  padding: 0.85rem 1rem;
+  font-family: 'Sometype Mono', monospace;
+  font-size: 0.95rem;
+  border: 3px solid #2C2C2C;
+  border-radius: 0;
+  background: #fff;
+  color: #2C2C2C;
+  transition: box-shadow 0.15s, border-color 0.15s;
+}
+
+.gg-form-group input:focus,
+.gg-form-group select:focus,
+.gg-form-group textarea:focus {
+  outline: none;
+  border-color: #4ECDC4;
+  box-shadow: 4px 4px 0 #4ECDC4;
+}
+
+.gg-form-group input::placeholder,
+.gg-form-group textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.gg-form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='%232C2C2C' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12l-6 6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+}
+
+.gg-form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.gg-hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.gg-submit-btn {
+  width: 100%;
+  padding: 1.1rem 2rem;
+  font-family: 'Sometype Mono', monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2C2C2C;
+  background: #F4D03F;
+  border: 4px solid #2C2C2C;
+  box-shadow: 6px 6px 0 #2C2C2C;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  margin-top: 1rem;
+}
+
+.gg-submit-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #2C2C2C;
+}
+
+.gg-submit-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0 #2C2C2C;
+}
+
+.gg-submit-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 6px 6px 0 #2C2C2C;
+}
+
+.gg-form-message {
+  padding: 1rem;
+  margin-top: 1.25rem;
+  text-align: center;
+  font-weight: 600;
+  border: 3px solid;
+}
+
+.gg-form-message.success {
+  background: #D4EDDA;
+  color: #155724;
+  border-color: #155724;
+}
+
+.gg-form-message.error {
+  background: #F8D7DA;
+  color: #721C24;
+  border-color: #721C24;
+}
+
+.gg-form-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: #59473C;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .gg-form-container {
+    padding: 1.5rem;
+    box-shadow: 6px 6px 0 #2C2C2C;
+  }
+  .gg-form-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .gg-form-header h3 {
+    font-size: 1.25rem;
+  }
+  .gg-submit-btn {
+    box-shadow: 4px 4px 0 #2C2C2C;
+  }
+  .gg-submit-btn:hover {
+    box-shadow: 6px 6px 0 #2C2C2C;
+  }
+}
+</style>
+
+<div class="gg-form-container">
+  <div class="gg-form-header">
+    <h3>Build Your Custom Training Plan</h3>
+    <p>Tell us about yourself and we'll create a plan calibrated to your goals.</p>
+  </div>
+
+  <form id="gg-training-form">
+    <!-- Honeypot field - hidden from users, catches bots -->
+    <input type="text" name="_honeypot" class="gg-hp-field" tabindex="-1" autocomplete="off">
+
+    <div class="gg-form-row">
+      <div class="gg-form-group">
+        <label>Name <span class="required">*</span></label>
+        <input type="text" name="name" required placeholder="Your name">
+      </div>
+      <div class="gg-form-group">
+        <label>Email <span class="required">*</span></label>
+        <input type="email" name="email" required placeholder="you@email.com">
+      </div>
+    </div>
+
+    <div class="gg-form-row">
+      <div class="gg-form-group">
+        <label>Target Race / Event</label>
+        <input type="text" name="targetRace" placeholder="e.g., Unbound 200, SBT GRVL">
+      </div>
+      <div class="gg-form-group">
+        <label>Race Date</label>
+        <input type="date" name="raceDate">
+      </div>
+    </div>
+
+    <div class="gg-form-row">
+      <div class="gg-form-group">
+        <label>Experience Level</label>
+        <select name="yearsCycling">
+          <option value="">Select...</option>
+          <option value="0-1">New to cycling (0-1 years)</option>
+          <option value="1-3">Some experience (1-3 years)</option>
+          <option value="3-5">Intermediate (3-5 years)</option>
+          <option value="5+">Experienced (5+ years)</option>
+        </select>
+      </div>
+      <div class="gg-form-group">
+        <label>Weekly Training Hours</label>
+        <select name="weeklyHours">
+          <option value="">Select...</option>
+          <option value="4-6">4-6 hours</option>
+          <option value="6-8">6-8 hours</option>
+          <option value="8-10">8-10 hours</option>
+          <option value="10-12">10-12 hours</option>
+          <option value="12-15">12-15 hours</option>
+          <option value="15+">15+ hours</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="gg-form-row">
+      <div class="gg-form-group">
+        <label>Your Goal</label>
+        <select name="goal">
+          <option value="">Select...</option>
+          <option value="finish">Finish the event</option>
+          <option value="finish-strong">Finish strong</option>
+          <option value="pr">Set a PR</option>
+          <option value="compete">Compete for placement</option>
+          <option value="podium">Podium finish</option>
+        </select>
+      </div>
+      <div class="gg-form-group">
+        <label>Do you train with power?</label>
+        <select name="powerOrHr">
+          <option value="">Select...</option>
+          <option value="power">Yes, power meter</option>
+          <option value="hr">Heart rate only</option>
+          <option value="rpe">Neither (RPE)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="gg-form-row single">
+      <div class="gg-form-group">
+        <label>Anything else we should know?</label>
+        <textarea name="additionalNotes" placeholder="Injuries, time constraints, specific concerns..."></textarea>
+      </div>
+    </div>
+
+    <button type="submit" class="gg-submit-btn">Request My Custom Plan →</button>
+  </form>
+
+  <div id="gg-form-message" class="gg-form-message" style="display: none;"></div>
+
+  <div class="gg-form-footer">
+    Plans typically delivered within 24 hours
+  </div>
+</div>
+
+<script>
+(function() {
+  const WORKER_URL = 'https://training-plan-intake.gravelgodcoaching.workers.dev';
+  const form = document.getElementById('gg-training-form');
+  const messageEl = document.getElementById('gg-form-message');
+  const submitBtn = form.querySelector('.gg-submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+    messageEl.style.display = 'none';
+
+    // Gather form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    data._source = 'gravelgodcycling.com/training-plans';
+
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        messageEl.className = 'gg-form-message success';
+        messageEl.textContent = result.message;
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Submission failed');
+      }
+    } catch (error) {
+      messageEl.className = 'gg-form-message error';
+      messageEl.textContent = error.message || 'Something went wrong. Please try again.';
+    }
+
+    messageEl.style.display = 'block';
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Request My Custom Plan →';
+  });
+})();
+</script>
